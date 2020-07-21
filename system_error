@@ -1,0 +1,82 @@
+1. no nvidia graphic-driver
+sudo reboot
+click 'shift' for a lone time
+press 'e' for edit
+add 'nomodeset'
+
+2. 'sudo apt-get update' for error
+sudo pkill - KILL appstreamcli
+wget -P /tmp https://launchpad.net/ubuntu/+archive/primary/+files/appstream_0.9.4-1ubuntu1_amd64.deb
+wget -P /tmp https://launchpad.net/ubuntu/+archive/primary/+files/libappstream3_0.9.4-1ubuntu1_amd64.deb
+sudo dpkg -i /tmp/appstream_0.9.4-1ubuntu1_amd64.deb
+sudo dpkg -i /tmp/libappstream_3_0.9.4-1ubuntu1_amd64.deb
+sudo apt-get update
+
+sudo rm -rf /var/lib/apt/lists/*
+sudo apt-get clean && sudo apt-get update
+
+3. install drivers from web
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt-get -y install nvidia-384
+sudo reboot
+
+4. cannot enter to desktop
+sudo apt-get update
+sudo apt-get install --reinstall ubuntu-desktop
+sudo apt-get install unity
+sudo service lightdm restart
+
+5. openssh-server need depends
+sudo apt-get install -f
+sudo apt-get install openssh-client=1:7.2p2-4
+sudo apt-get install openssh-server
+
+6. uninstall old nvidia-driver
+sudo /etc/init.d/lightdm stop
+sudo /etc/init.d/lightdm status
+sudo apt-get purge nvidia-cuda*
+sudo apt-get purge nvidia-*
+sudo init 3
+sudo rm -r /tmp/.X*
+
+7. uninstall new kernel
+sudo vim /etc/default/grub
+更换为GRUB_DEFAULT="Ubuntu, with Linux 4.15.0-29-generic"
+sudo update-grub
+sudo apt-get purge linux-image-4.15.0-62-generic
+选择否
+sudo reboot
+
+7. install tensorrt
+sudo dpkg -i nv-tensorrt-repo-ubuntu1804-cuda10.1-trt5.1.2.2-rc-20190227_1-1_amd64.deb
+sudo apt-key add /var/nv-tensorrt-repo-cuda10.1-trt5.1.2.2-rc-20190227/7fa2af80.pub
+sudo apt-get update
+sudo apt-get install tensorrt
+sudo apt-get install python-libnvinfer-dev
+sudo apt-get install python3-libnvinfer-dev
+sudo apt-get install uff-converter-tf
+dpkg -l | grep TensorRT
+
+6. qinghua and zhongkeda mirror
+sudo vim /etc/apt/sources.list
+
+# zhongkeda
+deb http://debian.ustc.edu.cn/ubuntu/ trusty main multiverse restricted universe
+deb http://debian.ustc.edu.cn/ubuntu/ trusty-backports main multiverse restricted universe
+deb http://debian.ustc.edu.cn/ubuntu/ trusty-proposed main multiverse restricted universe
+deb http://debian.ustc.edu.cn/ubuntu/ trusty-security main multiverse restricted universe
+deb http://debian.ustc.edu.cn/ubuntu/ trusty-updates main multiverse restricted universe
+deb-src http://debian.ustc.edu.cn/ubuntu/ trusty main multiverse restricted universe
+deb-src http://debian.ustc.edu.cn/ubuntu/ trusty-backports main multiverse restricted universe
+deb-src http://debian.ustc.edu.cn/ubuntu/ trusty-proposed main multiverse restricted universe
+deb-src http://debian.ustc.edu.cn/ubuntu/ trusty-security main multiverse restricted universe
+deb-src http://debian.ustc.edu.cn/ubuntu/ trusty-updates main multiverse restricted univers
+
+# qinghua
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ xenial-security main restricted universe multiverse
+
+sudo apt-get update
