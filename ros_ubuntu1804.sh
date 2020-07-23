@@ -53,15 +53,16 @@ sudo pip3 install torch-1.4.0-cp36-cp36m-manylinux1_x86_64.whl
 sudo pip3 install torchvision==0.5.0 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 # extra: using other source list
+# it's very dangerous
 #sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 # 8. ros1 install
-#export DEBIAN_FRONTEND=noninteractive
-#sudo sh -c '. /etc/lsb-release && echo "deb http://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu/ `lsb_release -cs` main" > /etc/apt/sources.list.d/ros-latest.list' &&\	
-#sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654 &&\
-#sudo apt-get update &&\
-#sudo apt-get install -y ros-melodic-desktop-full &&\
-#sudo apt install -y python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
+export DEBIAN_FRONTEND=noninteractive
+sudo sh -c '. /etc/lsb-release && echo "deb http://mirrors.tuna.tsinghua.edu.cn/ros/ubuntu/ `lsb_release -cs` main" > /etc/apt/sources.list.d/ros-latest.list'
+sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+sudo apt-get update
+sudo apt-get install -y ros-melodic-desktop-full
+sudo apt install -y python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
 
 # 9. ros2 install
 sudo apt install -y locales
@@ -80,15 +81,3 @@ sudo apt install -y ros-dashing-launch-testing-ament-cmake
 sudo apt install -y ros-dashing-ros2bag ros-dashing-rosbag2*
 sudo apt install -y ros-dashing-rmw-opensplice-cpp
 sudo apt install -y ros-dashing-rmw-connext-cpp
-
-
-
-
-
-
-
-
-
-
-
-
