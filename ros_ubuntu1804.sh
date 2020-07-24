@@ -91,7 +91,7 @@ sudo apt-get install libxkbcommon-x11-dev
 #sudo rm  /usr/lib/x86_64-linux-gnu/libGL.so
 #sudo ln -s  /usr/lib/libGL.so.1  /usr/lib/x86_64-linux-gnu/libGL.so
 #sudo rm  /usr/lib/x86_64-linux-gnu/libEGL.so
-#sudo ln -s  /usr/lib/x86_64-linux-gnu/libEGL.so.1  /usr/lib/x86_64-linux-gnu/libGL.so
+#sudo ln -s  /usr/lib/x86_64-linux-gnu/libEGL.so.1  /usr/lib/x86_64-linux-gnu/libEGL.so
 tar -zxvf Pangolin.tar.gz
 cd Pangolin && mkdir build && cd build
 cmake .. && cmake --build .
