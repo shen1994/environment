@@ -82,3 +82,15 @@ sudo apt install -y ros-dashing-launch-testing-ament-cmake
 sudo apt install -y ros-dashing-ros2bag ros-dashing-rosbag2*
 sudo apt install -y ros-dashing-rmw-opensplice-cpp
 sudo apt install -y ros-dashing-rmw-connext-cpp
+
+# 10. Pangolin
+sudo apt-get install libgl1-mesa-dev
+sudo apt-get install libglew-dev
+sudo apt-get install libxkbcommon-x11-dev
+tar -zxvf Pangolin.tar.gz
+cd Pangolin && mkdir build && cd build
+cmake .. && cmake --build .
+# cmake --build . --target doc
+cd .. && cd ..
+rm -rf Pangolin
+
