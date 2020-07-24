@@ -4,6 +4,7 @@ sudo apt-get -y install vim
 sudo apt-get -y install net-tools
 sudo apt-get -y install openssh-server
 sudo apt-get -y install cmake gcc g++
+sudo apt-get -y install terminator
 
 # 2. disable ubuntu driver 
 sudo vim /etc/modprobe.d/blacklist-nouveau.conf
@@ -35,7 +36,7 @@ sudo apt install -y apt-utils git
 sudo apt install -y python-dev python-pip python-setuptools
 sudo apt install -y python3-dev python3-pip python3-setuptools
 sudo apt install -y psmisc
-sudo apt install -y net-tools iputils-ping lsb-release
+sudo apt install -y iputils-ping lsb-release
 sudo pip3 install --upgrade pip -i https://pypi.tuna.tsinghua.edu.cn/simple
 sudo pip3 install opencv-python -i https://pypi.tuna.tsinghua.edu.cn/simple
 
