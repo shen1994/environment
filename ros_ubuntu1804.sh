@@ -86,11 +86,26 @@ sudo apt install -y ros-dashing-rmw-connext-cpp
 # 10. Pangolin
 sudo apt-get install libgl1-mesa-dev
 sudo apt-get install libglew-dev
+sudo apt-get install libegl1-mesa-dev
 sudo apt-get install libxkbcommon-x11-dev
+#sudo rm  /usr/lib/x86_64-linux-gnu/libGL.so
+#sudo ln -s  /usr/lib/libGL.so.1  /usr/lib/x86_64-linux-gnu/libGL.so
+#sudo rm  /usr/lib/x86_64-linux-gnu/libEGL.so
+#sudo ln -s  /usr/lib/x86_64-linux-gnu/libEGL.so.1  /usr/lib/x86_64-linux-gnu/libGL.so
 tar -zxvf Pangolin.tar.gz
 cd Pangolin && mkdir build && cd build
 cmake .. && cmake --build .
 # cmake --build . --target doc
-cd .. && cd ..
-rm -rf Pangolin
+cd .. && cd .. && rm -rf Pangolin
+
+# 11. Tensorrt
+tar -zxvf TensorRT-5.1.5.0.Ubuntu-16.04.5.x86_64-gnu.cuda-10.1.cudnn7.5.tar.gz
+sudo mv TensorRT-5.1.5.0 /usr/local/
+sudo mv /usr/local/TensorRT-5.1.5.0 /usr/local/TensorRT
+sudo sed -i '$a export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu' ~/.bashrc 
+sudo sed -i '$a export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/TensorRT/lib' ~/.bashrc
+source ~/.bashrc
+
+# 12. Eigen
+
 
