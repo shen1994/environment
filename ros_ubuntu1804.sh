@@ -107,5 +107,9 @@ sudo sed -i '$a export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/TensorRT/lib'
 source ~/.bashrc
 
 # 12. Eigen
+mkdir build && cd build && cmake ..
+make -j4 && sudo make install
+
+# 13. 
 
 
